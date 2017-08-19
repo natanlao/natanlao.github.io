@@ -1,0 +1,93 @@
+@import _clrs
+@import normalize
+
+$light-background: $white
+$light-accent: $blue
+$light-text: $black
+$dark-background: $navy
+$dark-accent: $yellow
+$dark-text: $silver
+
+$system-font: -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+
+html
+    min-height: 100%  // instead of `height: 100%` to fix small screen scrolling
+    box-sizing: border-box
+    padding: 1em
+
+    @media only screen and (max-width: 560px)
+        padding: 0
+
+*, *:before, *:after
+    box-sizing: inherit
+
+
+body
+    line-height: 1.25em
+    max-width: 560px
+    font-family: $system-font
+    background-color: $light-background
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+    color: $light-text
+    background: url("/bg.svg")
+
+    @media (prefers-color-scheme: dark)
+        background-color: $dark-background
+        color: $dark-text
+
+    @media only screen and (max-width: 560px)
+        line-height: 1.5em
+
+li a
+    @media only screen and (max-width: 560px)
+        line-height: 2em
+
+main
+    font-size: 1em
+    background-color: $light-background
+    padding: .001em 1em
+
+    @media (prefers-color-scheme: dark)
+        background-color: $dark-background
+
+footer
+    padding: 1em
+
+header
+    padding: 1em 1em 0 1em
+
+h1
+    margin: 0 !important
+
+h2
+    text-transform: uppercase
+    font-size: .9em
+    margin: 2em 0 -.5em 0
+
+a
+    color: $light-text
+    text-decoration: none
+    border-bottom: 1px $light-accent solid
+
+    &:hover
+        color: $light-accent
+        border: 0
+
+        @media (prefers-color-scheme: dark)
+            color: $dark-accent
+
+    &:active, &:focus
+        outline: none
+
+    @media (prefers-color-scheme: dark)
+        color: $dark-text
+        border-bottom: 1px $dark-accent solid
+
+small, small a
+    color: $gray
+    border: 0
+    text-decoration: none
+
+ol, ul
+    padding-left: 30px
