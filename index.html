@@ -3,31 +3,49 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Hi. My name is Natan. I'm a programmer. This is my 34-line landing page."/>
+  <meta name="description" content="Hi, I'm Natan. I study and work with computers, among other things.">
   <title>Natan Lao</title>
   <style>
-    body { padding: 1em; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}
-    header, main { max-width: 768px; margin: 0 auto; }
-    main { font-size: 1em; }
-    a { color: #111; font-family: monospace; }
-    a:hover { color: #AAA; }
+    html { height: 100%; }
+    body { padding: 1em; font-family: Inter, -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; line-height: 1.25; background: #FFF url("background.svg") no-repeat bottom left; background-size: cover; overflow: hidden; }
+    header, main { max-width: 560px; }
+    header { margin-bottom: 5px; }
+    h1 { display: inline-block; margin: 0 !important; background-color: #FFF; padding: 15px; }
+    main { font-size: 1.05em; background-color: #FFF; padding: 1px 15px 15px 15px; }
+    a { color: #111; text-decoration-color: #0074D9; }
+    a:hover { color: #0074D9; text-decoration: none; }
+    h2 { text-transform: uppercase; font-size: .9em; color: #333; font-family: -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+    small, small a { color: #666; text-decoration: none; }
+    footer { padding: 15px; }
   </style>
+  <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 </head>
 <body>
   <header>
-    <h1>Hi, I'm Natan.</h1>
+    <h1>Natan Lao</h1>
   </header>
   <main>
-    <p>I'm a student at UC Santa Cruz pursuing a B.S. in computer engineering with a concentration in systems programming. I work on the <a href="https://cgp.genomics.ucsc.edu/">Computational Genomics Platform</a> at the UCSC Genomics Institute.</p>
-    <p>I don't really have any accomplishments, so this page is, like my wallet, mostly empty. I have a couple personal projects on <a href="https://github.com/natanlao">GitHub</a>, though.</p>
-    <p>I can't imagine why you would want to get in touch with me, but if you do, you can find me online here:</p>
-    <ul>
-        <!--<li><a href="https://twitter.com/natanlao">Twitter</a></li>-->
-        <li><a href="https://github.com/natanlao">GitHub</a></li>
-        <li><a href="https://linkedin.com/in/natanlao">LinkedIn</a></li>
-    </ul>
-    <p>I'm not sure who would ever need my email address either, but landing pages aren't really complete without it. You can reach me at hello at this domain  (<a href="https://pgp.mit.edu/pks/lookup?op=get&search=0x7D2499A91CDAF876">gpg</a>).</p>
+    <p>Hi, I'm Natan. I'm a student at UC Santa Cruz purusing a degree in computer engineering. I also work on the <a href="https://cgp.genomics.ucsc.edu/">Computational Genomics Platform</a> at the <a href="https://ucscgenomics.soe.ucsc.edu">UCSC Genomics Institute.</a></p>
+    <h2>Writing</h2>
+    <p>Nothing here yet. Soon, maybe.</p>
+    <p>You can find some brief technical notes at <a href="https://gist.github.com/natanlao">gist.github.com/natanlao</a>.</p>
+    <h2>Online</h2>
+    <p>
+        <a href="https://github.com/natanlao">github.com/natanlao</a><br>
+        <a href="https://linkedin.com/in/natanlao">linkedin.com/in/natanlao</a><br>
+        <a href="https://twitter.com/natanlao">twitter.com/natanlao</a>
+    </p>
+    <h2>Contact</h2>
+    <p>You can reach me at hello at this domain (<a href="https://pgp.mit.edu/pks/lookup?op=get&search=0x7D2499A91CDAF876">gpg</a>).</p>
   </main>
+  <footer>
+    <small>
+      Favicon from <a href="https://github.com/mozilla/fxemoji">FxEmojis</a>.
+      Background by <a href="https://www.rawpixel.com/aew/">rawpixel.com/aew</a>.<br>
+      <a href="https://github.com/natanlao/natanlao.github.io">View source</a>.
+    </small>
+  </footer>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/inter-ui@3.9.0/inter.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/inter-ui@3.9.0/inter.min.css"></noscript>
 </body>
 </html>
