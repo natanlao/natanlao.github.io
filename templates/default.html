@@ -3,11 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Hi, I'm Natan. I study and work with computers, among other things.">
-  <title>Natan Lao</title>
+  $if(description)$
+  <meta name="description" content="$description$">
+  $endif$
+  <title>$title$</title>
   <style>
     html { min-height: 100%; }
-    body { padding: 1em; font-family: "Inter", -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; line-height: 1.25; background: #FFF url("background.svg") no-repeat bottom left; background-size: cover; }
+    body { padding: 1em; font-family: "Inter", -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; line-height: 1.25; background: #FFF url("/static/background.svg") no-repeat bottom left; background-size: cover; }
     header, main { max-width: 560px; }
     header { margin-bottom: 5px; }
     h1 { display: inline-block; margin: 0 !important; background-color: #FFF; padding: 15px; }
@@ -25,18 +27,7 @@
     <h1>Natan Lao</h1>
   </header>
   <main>
-    <p>Hi, I'm Natan. I'm a student at UC Santa Cruz pursuing a degree in computer engineering. I also work on the <a href="https://cgp.genomics.ucsc.edu/">Computational Genomics Platform</a> at the <a href="https://ucscgenomics.soe.ucsc.edu">UCSC Genomics Institute.</a></p>
-    <h2>Writing</h2>
-    <p>Nothing here yet. Soon, maybe.</p>
-    <p>You can find some brief technical notes at <a href="https://gist.github.com/natanlao">gist.github.com/natanlao</a>.</p>
-    <h2>Online</h2>
-    <p>
-        <a href="https://github.com/natanlao">github.com/natanlao</a><br>
-        <a href="https://linkedin.com/in/natanlao">linkedin.com/in/natanlao</a><br>
-        <a href="https://twitter.com/natanlao">twitter.com/natanlao</a>
-    </p>
-    <h2>Contact</h2>
-    <p>You can reach me at hello at this domain (<a href="https://pgp.mit.edu/pks/lookup?op=get&search=0x7D2499A91CDAF876">gpg</a>).</p>
+    $body$
   </main>
   <footer>
     <small>
