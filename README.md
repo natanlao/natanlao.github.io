@@ -7,7 +7,7 @@ GitHub Pages.
 
 This setup is incredibly heavyweight for what right now is just a landing page.
 I would normally tell you to stop asking about it so I don't have to defend my
-deesign decisions, but I would actually love to talk to you if you're reading
+design decisions, but I would actually love to talk to you if you're reading
 this, so go ahead. I like meeting new people.
 
 ## Build process
