@@ -14,7 +14,7 @@ this, so go ahead. I like meeting new people.
 
 1. Install Stack, then use Stack to install Hakyll (i.e., `stack install
    haykll`). This should automatically install GHC.
-1. Install npm, then install Sass (i.e., `npm install -g sass`).
+1. Install sassc (e.g., `apt install sassc`).
 1. Install [minify][install-minify].
 1. Build the site:
 
