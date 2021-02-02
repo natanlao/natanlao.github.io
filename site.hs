@@ -37,7 +37,7 @@ main = hakyll $ do
     match "css/default.sass" $ do
         route   $ setExtension "css"
         compile $ getResourceString
-            >>= withItemBody (unixFilter "sass" ["--no-source-map", "css/default.sass"])
+            >>= withItemBody (unixFilter "sassc" ["--omit-map-comment", "--sass", "css/default.sass"])
             >>= return . fmap compressCss
 
 --------------------------------------------------------------------------------
