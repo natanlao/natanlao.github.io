@@ -25,14 +25,10 @@ You can find some notes on things I encounter at
 
 * [github.com/natanlao](https://github.com/natanlao)
 * [linkedin.com/in/natanlao](https://linkedin.com/in/natanlao)
-* [twitter.com/natanlao](https://twitter.com/natanlao)
 
 For more information about my background and qualifications, check out my
 [résumé].
 
-## Contact
-
-You can reach me at hello at this domain.
 
   [résumé]: /LaoNatanResume.pdf
 
