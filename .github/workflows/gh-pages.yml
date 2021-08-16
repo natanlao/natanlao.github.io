@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - develop
-  schedule:
-    # Cache is invalidated after 7 days of inactivity so run every 6 days
-    - cron: '6 6 */6 * *'
 
 jobs:
   publish:
