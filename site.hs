@@ -17,17 +17,27 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
+    match "notes/*" $ do
+        route $ setExtension "html"
+        compile $ pandocCompiler
+            >>= loadAndApplyTemplate "templates/post.html"    postCtx
+            >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= relativizeUrls
+
     match "index.markdown" $ do
         route $ setExtension "html"
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
+            notes <- recentFirst =<< loadAll "notes/*"
             let indexCtx =
+                    listField "notes" postCtx (return notes) `mappend`
                     listField "posts" postCtx (return posts) `mappend`
                     defaultContext
 
             getResourceBody
                 >>= applyAsTemplate indexCtx
                 >>= renderPandoc
+                >>= loadAndApplyTemplate "templates/index.html" indexCtx
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= relativizeUrls
                 >>= withItemBody (unixFilter "minify" ["--type", "html"])
@@ -43,5 +53,5 @@ main = hakyll $ do
 --------------------------------------------------------------------------------
 postCtx :: Context String
 postCtx =
-    dateField "date" "%B %Y" `mappend`
+    dateField "date" "%Y-%m-%d" `mappend`
     defaultContext

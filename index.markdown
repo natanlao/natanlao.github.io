@@ -3,21 +3,24 @@ title: Natan Lao
 description: Natan's unnamed personal website.
 ---
 
-I'm a software engineer, mostly.
-
 ## Hosted here
 
 * [youtube-dl as a service](https://yaas.natan.la)
 
 ## Writing
 
-<ul> <!-- When I try to write this in markdown it adds a <p>... -->
-$for(posts)$
-<li><a href="$url$">$title$</a></li>
-$endfor$
-</ul>
+I have a couple longer-form posts drafted, but I'm not ready to publish
+anything yet.
 
-You can find some notes on things I encounter at
+$for(posts)$
+* [$title$]($url$)$endfor$
+
+## Notes
+
+$for(notes)$
+* [$title$]($url$)$endfor$
+
+More at
 [gist.github.com/natanlao](https://gist.github.com/natanlao).
 
 
@@ -27,8 +30,5 @@ You can find some notes on things I encounter at
 * [linkedin.com/in/natanlao](https://linkedin.com/in/natanlao)
 
 For more information about my background and qualifications, check out my
-[résumé].
-
-
-  [résumé]: /LaoNatanResume.pdf
+[résumé](/LaoNatanResume.pdf).
 
