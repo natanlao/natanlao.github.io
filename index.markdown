@@ -29,6 +29,3 @@ More at
 * [github.com/natanlao](https://github.com/natanlao)
 * [linkedin.com/in/natanlao](https://linkedin.com/in/natanlao)
 
-For more information about my background and qualifications, check out my
-[résumé](/LaoNatanResume.pdf).
-
