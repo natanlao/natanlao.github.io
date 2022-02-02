@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Documenting Makefile targets</title>
+  <link rel="stylesheet" href="../css/default.css" />
+</head>
+<body>
+  <nav>
+  <a href="../">&larr; Homepage</a>
+</nav>
+
+<main>
+  <article>
+    <header>
+      <h1>Documenting Makefile targets</h1>
+      <section>
+        <small>
+          <!-- TODO: <time> -->
+          Posted 2022-02-01<br>
+          <!-- Last updated 2022-02-01 -->
+        </small>
+      </section>
+    </header>
+    <p>Inspired by <a href="https://news.ycombinator.com/item?id=30137254">this post (<em>Autodocumenting Makefiles</em>) on Hacker News</a>. This approach only requires <code>sed</code>. That can be a good thing or a bad thing; <code>sed</code> is pretty widely available, but its availability isn’t guaranteed, and flags can vary between implementations.</p>
+<p>There is a <a href="https://www.cmcrossroads.com/article/self-documenting-makefiles">Make-native</a> way to do this, which is more robust. I like this approach because it’s concise, but it’s not <em>that</em> much more concise. There’s a tradeoff to be made for sure.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode makefile"><code class="sourceCode makefile"><a class="sourceLine" id="cb1-1" title="1"><span class="dt">.DEFAULT_GOAL </span><span class="ch">:=</span><span class="st"> help</span></a>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="ot">.PHONY:</span><span class="dt"> help</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="dv">help:</span><span class="dt"> </span><span class="co">## Display this help message</span></a>
+<a class="sourceLine" id="cb1-5" title="5">	<span class="ch">@</span><span class="fu">sed -En </span><span class="st">'s/^([a-zA-Z]+):.*##(.*)</span><span class="ch">$$</span><span class="st">/\1: \2/p'</span><span class="fu"> </span><span class="ch">$(</span><span class="dt">MAKEFILE_LIST</span><span class="ch">)</span><span class="fu"> | sort</span></a>
+<a class="sourceLine" id="cb1-6" title="6"></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="ot">.PHONY:</span><span class="dt"> foo</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="dv">foo:</span><span class="dt"> </span><span class="co">## Do the foo</span></a>
+<a class="sourceLine" id="cb1-9" title="9">	foo</a>
+<a class="sourceLine" id="cb1-10" title="10"></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="ot">.PHONY:</span><span class="dt"> bar</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="dv">bar:</span><span class="dt"> </span><span class="co">## Do the bar</span></a>
+<a class="sourceLine" id="cb1-13" title="13">	bar</a>
+<a class="sourceLine" id="cb1-14" title="14"></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="dv">undocumented_target:</span></a>
+<a class="sourceLine" id="cb1-16" title="16">	exit 1</a></code></pre></div>
+<pre class="console"><code>$ make
+bar:  Do the bar
+foo:  Do the foo
+help:  Display this help message
+
+$ make help
+bar:  Do the bar
+foo:  Do the foo
+help:  Display this help message</code></pre>
+<p>See this <a href="https://stackoverflow.com/a/58379307">Stack Overflow post on printing capture groups with <code>sed</code></a> for more info about the <code>sed</code> call.</p>
+<p>The regular expression, piece by piece:</p>
+<ul>
+<li><code>^</code>: match start of line</li>
+<li><code>([a-zA-Z]+)</code>: match 1 or more letters and assign that match to a capture group</li>
+<li><code>:.*##</code>: match a colon, followed by any character, followed by two <code>#</code> characters</li>
+<li><code>(.*)</code>: match the rest of the line and assign that match to a capture group</li>
+<li><code>$$</code>: match the end of the line (this should just be <code>$</code> but is escaped to <code>$$</code> for Make)</li>
+</ul>
+<p>Note that <code>sed</code> has <a href="https://www.gnu.org/software/sed/manual/html_node/Regular-Expressions.html">slightly different regex syntax</a>.</p>
+  </article>
+</main>
+
+  <footer>
+    <small>
+      Background <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> <a href="https://www.heropatterns.com/">Steve Schoger</a>.<br>
+      <a href="https://github.com/natanlao/natanlao.github.io">View source</a>.
+    </small>
+  </footer>
+</body>
+</html>
