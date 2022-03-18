@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>AWS ECR `docker push` fails with EOF</title>
+  <link rel="stylesheet" href="../css/default.css" />
+</head>
+<body>
+  <nav>
+  <a href="../">&larr; Homepage</a>
+</nav>
+
+<main>
+  <article>
+    <header>
+      <h1>AWS ECR `docker push` fails with EOF</h1>
+      <section>
+        <small>
+          <!-- TODO: <time> -->
+          Posted 2022-03-17<br>
+          <!-- Last updated 2022-03-17 -->
+        </small>
+      </section>
+    </header>
+    <p>If you’re pushing a Docker image to an AWS Elastic Container Registry repository and you encounter an EOF error:</p>
+<pre><code>$ docker push ${ECR_ID}.dkr.ecr.us-east-1.amazonaws.com/${IMAGE}:latest
+...
+6d6356604420: Layer already exists
+c2dc8b8960d7: Layer already exists
+EOF
+
+$ journalctl -u docker.service
+...
+Mar 17 15:02:06 hostname dockerd[16882]: time=&quot;2022-03-17T15:02:06.394662889-04:00&quot; level=error msg=&quot;Upload failed, retrying: EOF&quot;
+...
+Mar 17 15:23:58 hostname dockerd[17716]: time=&quot;2022-03-17T15:23:58.438706900-04:00&quot; level=error msg=&quot;Upload failed: EOF&quot;</code></pre>
+<p>then check the IAM policy that is supposed to authorize you to push to your repository, as ECR may “silently” deny unauthorized pushes with an EOF. If this is the case, you’ll see an event in CloudTrail documenting that your push was denied.</p>
+<p>When this happened to me, it was because I had a malformed ARN for my repository in the IAM policy I wrote. In particular, I specified</p>
+<pre><code>arn:aws:ecr:us-east-1:${ACCOUNT_ID}:${IMAGE}</code></pre>
+<p>instead of</p>
+<pre><code>arn:aws:ecr:us-east-1:${ACCOUNT_ID}:repository/${IMAGE}</code></pre>
+<p>.</p>
+  </article>
+</main>
+
+  <footer>
+    <small>
+      Background <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> <a href="https://www.heropatterns.com/">Steve Schoger</a>.<br>
+      <a href="https://github.com/natanlao/natanlao.github.io">View source</a>.
+    </small>
+  </footer>
+</body>
+</html>
