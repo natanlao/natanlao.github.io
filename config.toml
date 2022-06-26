@@ -3,6 +3,8 @@ title = "Natan Lao"
 # The URL the site will be built for
 base_url = "https://natan.la"
 
+minify_html = true
+
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 
