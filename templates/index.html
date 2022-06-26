@@ -1,30 +1,27 @@
 {% extends "default.html" %}
 {% block body %}
 <header>
-  <h1>Natan Lao</h1>
+    <h1>{{ section.title }}</h1>
 </header>
 <main>
-    <h2>Hosted here</h2>
-    <ul>
-        <li><a href="https://yaas.natan.la">youtube-dl as a service</a></li>
-    </ul>
+    {{ section.content | safe }}
 
-    <h2 id="writing">Writing</h2>
+    {#<h2>Writing</h2>
     <p>I have a couple longer-form posts drafted, but I'm not ready to publish
-    anything yet.</p>
+    anything yet.</p>#}
 
-    <h2 id="notes">Notes</h2>
+    <h2>Notes</h2>
     <ul>
         {% set notes = get_section(path="notes/_index.md") %}
         {% for note in notes.pages %}
         <li><a href="{{ note.path }}">{{ note.title | markdown(inline=true) | safe }}</a></li>
         {% endfor %}
     </ul>
-    <p>More at <a href="https://gist.github.com/natanlao">gist.github.com/natanlao</a>.</p>
 
-    <h2 id="elsewhere">Elsewhere</h2>
+    <h2>Elsewhere</h2>
     <ul>
         <li><a href="https://github.com/natanlao">github.com/natanlao</a></li>
+        <li><a href="https://gist.github.com/natalao">gist.github.com/natanlao</a></li>
         <li><a href="https://linkedin.com/in/natanlao">linkedin.com/in/natanlao</a></li>
     </ul>
 </main>

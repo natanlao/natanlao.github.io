@@ -5,27 +5,12 @@ description = "Natan's unnamed personal website."
 
 ## Hosted here
 
-* [youtube-dl as a service](https://yaas.natan.la)
+* [yaas: youtube-dl as a service](https://yaas.natan.la)
 
-## Writing
+## Projects
 
-I have a couple longer-form posts drafted, but I'm not ready to publish
-anything yet.
+* [reddit-transfer][reddit]
+* [ublock-origin-search-annoyance-list][ublock]
 
-$for(posts)$
-* [$title$]($url$)$endfor$
-
-## Notes
-
-$for(notes)$
-* [$title$]($url$)$endfor$
-
-More at
-[gist.github.com/natanlao](https://gist.github.com/natanlao).
-
-
-## Elsewhere
-
-* [github.com/natanlao](https://github.com/natanlao)
-* [linkedin.com/in/natanlao](https://linkedin.com/in/natanlao)
-
+  [reddit]: https://github.com/natanlao/reddit-transfer
+  [ublock]: https://github.com/natanlao/ublock-origin-search-annoyance-list
