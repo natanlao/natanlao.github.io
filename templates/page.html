@@ -10,9 +10,12 @@
       <h1>{{ page.title | markdown(inline=false) | safe }}</h1>
       <section>
         <small>
-          <!-- TODO: <time> -->
-          Posted {{ page.date }}<br>
-          <!-- Last updated $date$ -->
+            {% if page.date %}
+            Posted <time datetime="{{ page.date }}">{{ page.date | date(format="%A, %d %B %Y") }}</time><br>
+            {% endif %}
+            {% if page.updated %}
+            Updated <time datetime="{{ page.updated }}">{{ page.updated | date(format="%A, %d %B %Y") }}</time><br>
+            {% endif %}
         </small>
       </section>
     </header>
