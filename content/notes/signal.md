@@ -1,7 +1,7 @@
----
-title: Signal backup database schema
-date: 2021-12-23
----
++++
+title = "Signal backup database schema"
+date = "2021-12-23"
++++
 
 I have a Signal for Android backup (from around 2020) that I wanted to extract
 messages from. I used [signal_for_android_decryption] to decrypt that backup and

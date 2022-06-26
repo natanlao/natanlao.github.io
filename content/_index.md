@@ -1,7 +1,7 @@
----
-title: Natan Lao
-description: Natan's unnamed personal website.
----
++++
+title = "Natan Lao"
+description = "Natan's unnamed personal website."
++++
 
 ## Hosted here
 

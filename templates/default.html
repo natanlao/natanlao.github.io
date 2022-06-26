@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  $if(description)$
-  <meta name="description" content="$description$">
-  $endif$
-  <title>$title$</title>
-  <link rel="stylesheet" href="/css/default.css" />
+  {% if description %}
+  <meta name="description" content="{{ description }}">
+  {% endif %}
+  <title>{{ config.title }}</title>
+  <link rel="stylesheet" href="/default.css" />
 </head>
 <body>
-  $body$
+  {% block body %}{% endblock body %}
   <footer>
     <small>
       Background <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> <a href="https://www.heropatterns.com/">Steve Schoger</a>.<br>

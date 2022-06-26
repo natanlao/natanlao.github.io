@@ -1,7 +1,7 @@
----
-title: AWS ECR `docker push` fails with EOF
-date: 2022-03-17
----
++++
+title = "AWS ECR `docker push` fails with EOF"
+date = "2022-03-17"
++++
 
 If you're pushing a Docker image to an AWS Elastic Container Registry
 repository and you encounter an EOF error:

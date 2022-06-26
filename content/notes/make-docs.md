@@ -1,7 +1,7 @@
----
-title: Documenting Makefile targets
-date: 2022-02-01
----
++++
+title = "Documenting Makefile targets"
+date = "2022-02-01"
++++
 
 Inspired by [this post (*Autodocumenting Makefiles*) on Hacker
 News][make-docs-hn]. This approach only requires `sed`. That can be a good thing

@@ -1,0 +1,22 @@
+{% extends "default.html" %}
+{% block body %}
+<nav>
+  <a href="/">&larr; Homepage</a>
+</nav>
+
+<main>
+  <article>
+    <header>
+      <h1>{{ page.title | markdown(inline=false) | safe }}</h1>
+      <section>
+        <small>
+          <!-- TODO: <time> -->
+          Posted {{ page.date }}<br>
+          <!-- Last updated $date$ -->
+        </small>
+      </section>
+    </header>
+    {{ page.content | safe }}
+  </article>
+</main>
+{% endblock %}
