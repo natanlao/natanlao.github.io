@@ -24,8 +24,8 @@ jobs:
         run: |
           cd public
           for dir in $(ls -d notes/*/); do
-            mv "${dir}index.html" "${dir%/}.html"
-            rmdir ${dir}
+            sudo mv "${dir}index.html" "${dir%/}.html"
+            sudo rmdir ${dir}
           done
 
       - name: Publish to GitHub Pages
