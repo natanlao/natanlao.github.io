@@ -1,43 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <title>Natan Lao</title>
-  <link rel="stylesheet" href="/default.css" />
-</head>
-<body>
-  
-<nav>
-  <a href="/">&larr; Homepage</a>
-</nav>
-
-<main>
-  <article>
-    <header>
-      <h1><p>Documenting Makefile targets</p>
-</h1>
-      <section>
-        <small>
-          <!-- TODO: <time> -->
-          Posted 2022-02-01<br>
-          <!-- Last updated $date$ -->
-        </small>
-      </section>
-    </header>
-    <p>Inspired by <a href="https://news.ycombinator.com/item?id=30137254">this post (<em>Autodocumenting Makefiles</em>) on Hacker
-News</a>. This approach only requires <code>sed</code>. That can be a good thing
-or a bad thing; <code>sed</code> is pretty widely available, but its availability isn't
-guaranteed, and flags can vary between implementations.</p>
-<p>There is a <a href="https://www.cmcrossroads.com/article/self-documenting-makefiles">Make-native</a> way to do this, which is more robust.
-I like this approach because it's concise, but it's not <em>that</em> much more
-concise. There's a tradeoff to be made for sure.</p>
-<pre data-lang="Makefile" class="language-Makefile z-code"><code class="language-Makefile" data-lang="Makefile"><span class="z-source z-makefile"><span class="z-variable z-other z-makefile">.DEFAULT_GOAL</span> <span class="z-keyword z-operator z-assignment z-makefile">:=</span></span> <span class="z-source z-makefile"><span class="z-meta z-string z-makefile"><span class="z-string z-unquoted z-makefile">help</span></span>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta content="width=device-width,initial-scale=1"name=viewport><title>Natan Lao</title><link href=/default.css rel=stylesheet><body><nav><a href=/>← Homepage</a></nav><main><article><header><h1><p>Documenting Makefile targets</p></h1><section><small>  Posted 2022-02-01<br>  </small></section></header><p>Inspired by <a href="https://news.ycombinator.com/item?id=30137254">this post (<em>Autodocumenting Makefiles</em>) on Hacker News</a>. This approach only requires <code>sed</code>. That can be a good thing or a bad thing; <code>sed</code> is pretty widely available, but its availability isn't guaranteed, and flags can vary between implementations.<p>There is a <a href=https://www.cmcrossroads.com/article/self-documenting-makefiles>Make-native</a> way to do this, which is more robust. I like this approach because it's concise, but it's not <em>that</em> much more concise. There's a tradeoff to be made for sure.<pre class="language-Makefile z-code"data-lang=Makefile><code class=language-Makefile data-lang=Makefile><span class="z-source z-makefile"><span class="z-variable z-other z-makefile">.DEFAULT_GOAL</span> <span class="z-keyword z-operator z-assignment z-makefile">:=</span></span> <span class="z-source z-makefile"><span class="z-meta z-string z-makefile"><span class="z-string z-unquoted z-makefile">help</span></span>
 
 <span class="z-meta z-function z-makefile"><span class="z-entity z-name z-function z-makefile">.PHONY</span></span><span class="z-keyword z-operator z-assignment z-makefile">:</span> <span class="z-meta z-function z-arguments z-makefile"><span class="z-string z-unquoted z-makefile">help</span></span><span class="z-meta z-function z-body z-makefile">
 </span><span class="z-meta z-function z-makefile"><span class="z-entity z-name z-function z-makefile">help</span></span><span class="z-keyword z-operator z-assignment z-makefile">:</span> <span class="z-meta z-function z-arguments z-makefile"></span><span class="z-comment z-line z-number-sign z-makefile"><span class="z-punctuation z-definition z-comment z-makefile">#</span># Display this help message</span><span class="z-meta z-function z-body z-makefile">
-</span><span class="z-meta z-function z-body z-makefile">	<span class="z-constant z-language z-makefile">@</span><span class="z-source z-shell"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sed</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>En</span> <span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>s/^([a-zA-Z]+):.*##(.*)<span class="z-constant z-character z-escape z-makefile">$$</span>/<span class="z-constant z-character z-escape z-shell">\1</span>: <span class="z-constant z-character z-escape z-shell">\2</span>/p<span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span> <span class="z-variable z-parameter z-makefile"><span class="z-keyword z-other z-block z-begin z-makefile">$(</span>MAKEFILE_LIST<span class="z-keyword z-other z-block z-end z-makefile">)</span></span></span> <span class="z-keyword z-operator z-logical z-pipe z-shell">|</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sort</span></span></span>
+</span><span class="z-meta z-function z-body z-makefile">	<span class="z-constant z-language z-makefile">@</span><span class="z-source z-shell"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sed</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>En</span> <span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">'</span>s/^([a-zA-Z]+):.*##(.*)<span class="z-constant z-character z-escape z-makefile">$$</span>/<span class="z-constant z-character z-escape z-shell">\1</span>: <span class="z-constant z-character z-escape z-shell">\2</span>/p<span class="z-punctuation z-definition z-string z-end z-shell">'</span></span> <span class="z-variable z-parameter z-makefile"><span class="z-keyword z-other z-block z-begin z-makefile">$(</span>MAKEFILE_LIST<span class="z-keyword z-other z-block z-end z-makefile">)</span></span></span> <span class="z-keyword z-operator z-logical z-pipe z-shell">|</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sort</span></span></span>
 
 </span><span class="z-meta z-function z-makefile"><span class="z-entity z-name z-function z-makefile">.PHONY</span></span><span class="z-keyword z-operator z-assignment z-makefile">:</span> <span class="z-meta z-function z-arguments z-makefile"><span class="z-string z-unquoted z-makefile">foo</span></span><span class="z-meta z-function z-body z-makefile">
 </span><span class="z-meta z-function z-makefile"><span class="z-entity z-name z-function z-makefile">foo</span></span><span class="z-keyword z-operator z-assignment z-makefile">:</span> <span class="z-meta z-function z-arguments z-makefile"></span><span class="z-comment z-line z-number-sign z-makefile"><span class="z-punctuation z-definition z-comment z-makefile">#</span># Do the foo</span><span class="z-meta z-function z-body z-makefile">
@@ -49,8 +14,7 @@ concise. There's a tradeoff to be made for sure.</p>
 
 </span><span class="z-meta z-function z-makefile"><span class="z-entity z-name z-function z-makefile">undocumented_target</span></span><span class="z-keyword z-operator z-assignment z-makefile">:</span>
 <span class="z-meta z-function z-arguments z-makefile"></span><span class="z-meta z-function z-body z-makefile"></span><span class="z-meta z-function z-body z-makefile">	<span class="z-source z-shell"><span class="z-meta z-function-call z-shell"><span class="z-support z-function z-exit z-shell">exit</span></span><span class="z-meta z-function-call z-arguments z-shell"> 1</span></span>
-</span></span></code></pre>
-<pre class="z-code"><code><span class="z-text z-plain">$ make
+</span></span></code></pre><pre class=z-code><code><span class="z-text z-plain">$ make
 bar:  Do the bar
 foo:  Do the foo
 help:  Display this help message
@@ -59,27 +23,4 @@ $ make help
 bar:  Do the bar
 foo:  Do the foo
 help:  Display this help message
-</span></code></pre>
-<p>See this <a href="https://stackoverflow.com/a/58379307">Stack Overflow post on printing capture groups with <code>sed</code></a>
-for more info about the <code>sed</code> call.</p>
-<p>The regular expression, piece by piece:</p>
-<ul>
-<li><code>^</code>: match start of line</li>
-<li><code>([a-zA-Z]+)</code>: match 1 or more letters and assign that match to a capture group</li>
-<li><code>:.*##</code>: match a colon, followed by any character, followed by two <code>#</code> characters</li>
-<li><code>(.*)</code>: match the rest of the line and assign that match to a capture group</li>
-<li><code>$$</code>: match the end of the line (this should just be <code>$</code> but is escaped to <code>$$</code> for Make)</li>
-</ul>
-<p>Note that <code>sed</code> has <a href="https://www.gnu.org/software/sed/manual/html_node/Regular-Expressions.html">slightly different regex syntax</a>.</p>
-
-  </article>
-</main>
-
-  <footer>
-    <small>
-      Background <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> <a href="https://www.heropatterns.com/">Steve Schoger</a>.<br>
-      <a href="https://github.com/natanlao/natanlao.github.io">View source</a>.
-    </small>
-  </footer>
-</body>
-</html>
+</span></code></pre><p>See this <a href=https://stackoverflow.com/a/58379307>Stack Overflow post on printing capture groups with <code>sed</code></a> for more info about the <code>sed</code> call.<p>The regular expression, piece by piece:<ul><li><code>^</code>: match start of line<li><code>([a-zA-Z]+)</code>: match 1 or more letters and assign that match to a capture group<li><code>:.*##</code>: match a colon, followed by any character, followed by two <code>#</code> characters<li><code>(.*)</code>: match the rest of the line and assign that match to a capture group<li><code>$$</code>: match the end of the line (this should just be <code>$</code> but is escaped to <code>$$</code> for Make)</ul><p>Note that <code>sed</code> has <a href=https://www.gnu.org/software/sed/manual/html_node/Regular-Expressions.html>slightly different regex syntax</a>.</article></main><footer><small> Background <a href=https://creativecommons.org/licenses/by/4.0/>CC BY 4.0</a> <a href=https://www.heropatterns.com/>Steve Schoger</a>.<br> <a href=https://github.com/natanlao/natanlao.github.io>View source</a>. </small></footer>
