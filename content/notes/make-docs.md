@@ -35,7 +35,7 @@ undocumented_target:
 	exit 1
 ```
 
-```console
+```
 $ make
 bar:  Do the bar
 foo:  Do the foo
