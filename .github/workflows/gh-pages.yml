@@ -11,12 +11,23 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Apply ugly URLs patch
+        run: git apply ugly.patch
+
       - name: build_and_deploy
         uses: shalzz/zola-deploy-action@v0.14.1
         env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BUILD_DIR: public
           BUILD_ONLY: true
+
+      - name: Ugly URLs notes post-processing
+        run: |
+          cd public
+          for dir in $(ls -d notes/*/); do
+            mv "${dir}index.html" "${dir%/}.html"
+            rmdir ${dir}
+          done
 
       - name: Publish to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3.7.3

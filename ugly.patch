@@ -1,0 +1,30 @@
+diff --git a/templates/index.html b/templates/index.html
+index 734bcf0..8b302ae 100644
+--- a/templates/index.html
++++ b/templates/index.html
+@@ -14,7 +14,7 @@
+     <ul>
+         {% set notes = get_section(path="notes/_index.md") %}
+         {% for note in notes.pages %}
+-        <li><a href="{{ note.path }}">{{ note.title | markdown(inline=true) | safe }}</a></li>
++        <li><a href="{{ note.path | trim_end_matches(pat="/") }}.html">{{ note.title | markdown(inline=true) | safe }}</a></li>
+         {% endfor %}
+     </ul>
+ 
+diff --git a/templates/sitemap.xml b/templates/sitemap.xml
+new file mode 100644
+index 0000000..c7c7023
+--- /dev/null
++++ b/templates/sitemap.xml
+@@ -0,0 +1,11 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
++    {%- for sitemap_entry in entries %}
++    <url>
++        <loc>{{ sitemap_entry.permalink | escape_xml | trim_end_matches(pat="/") | safe }}.html</loc>
++        {%- if sitemap_entry.updated %}
++        <lastmod>{{ sitemap_entry.updated }}</lastmod>
++        {%- endif %}
++    </url>
++    {%- endfor %}
++</urlset>
