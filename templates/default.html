@@ -6,7 +6,7 @@
   {% if description %}
   <meta name="description" content="{{ description }}">
   {% endif %}
-  <title>{{ config.title }}</title>
+  <title>{% block title %}{% endblock title %}</title>
   <link rel="stylesheet" href="/default.css" />
 </head>
 <body>
