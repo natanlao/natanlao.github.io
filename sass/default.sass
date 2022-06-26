@@ -41,11 +41,12 @@ body
     @media only screen and (max-width: $content-width)
         line-height: 1.5em
 
-li > p
-  margin-bottom: 0
-  margin-top: 0
+li
+  & > p
+    margin-bottom: 0
+    margin-top: 0
 
-li a
+  a
     line-height: 1.5em
 
     @media only screen and (max-width: $content-width)
@@ -59,7 +60,10 @@ main
         background-color: $dark-background
 
 body > header, body > nav, main
-    padding: 0 1em
+    padding: 1em
+
+main > h2:first-child, header > h1:first-child
+    margin-top: 0
 
 footer
     padding: 1em
