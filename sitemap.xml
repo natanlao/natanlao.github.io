@@ -7,6 +7,10 @@
         <loc>https://natan.la/notes.html</loc>
     </url>
     <url>
+        <loc>https://natan.la/notes/aws-s3-include-exclude.html</loc>
+        <lastmod>2021-10-21</lastmod>
+    </url>
+    <url>
         <loc>https://natan.la/notes/docker-ecr-eof.html</loc>
         <lastmod>2022-03-17</lastmod>
     </url>
